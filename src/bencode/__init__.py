@@ -94,14 +94,17 @@ def encode_bool(x):
         return encode_int(0)
 
 
-def encode_string(x):
+def encode_bytes(x):
     result = bytearray()
 
-    data = bytearray(x, "utf-8")
-    result.extend(bytearray("{}:".format(len(data)), "utf-8"))
-    result.extend(data)
+    result.extend(bytearray("{}:".format(len(x)), "utf-8"))
+    result.extend(x)
 
     return result
+
+
+def encode_string(x):
+    return encode_bytes(bytearray(x, "utf-8"))
 
 
 def encode_list(x):
@@ -134,6 +137,7 @@ def encode_dict(x):
 encode_func = {
     int: encode_int,
     bool: encode_bool,
+    bytes: encode_bytes,
     str: encode_string,
     list: encode_list,
     tuple: encode_list,
