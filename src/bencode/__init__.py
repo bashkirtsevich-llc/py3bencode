@@ -17,7 +17,7 @@ def decode_int(x, f):
     return (n, newf + 1)
 
 
-def decode_string(x, f):
+def decode_bytes(x, f):
     colon = x.index(ord(":"), f)
     n = int(x[f:colon])
 
@@ -26,7 +26,7 @@ def decode_string(x, f):
 
     colon += 1
 
-    return (str(x[colon:colon + n], "utf-8"), colon + n)
+    return (x[colon:colon + n], colon + n)
 
 
 def decode_list(x, f):
@@ -41,7 +41,7 @@ def decode_list(x, f):
 def decode_dict(x, f):
     r, f = {}, f + 1
     while x[f] != ord("e"):
-        k, f = decode_string(x, f)
+        k, f = decode_bytes(x, f)
         r[k], f = decode_func[x[f]](x, f)
 
     return (r, f + 1)
@@ -51,16 +51,16 @@ decode_func = {
     ord("l"): decode_list,
     ord("d"): decode_dict,
     ord("i"): decode_int,
-    ord("0"): decode_string,
-    ord("1"): decode_string,
-    ord("2"): decode_string,
-    ord("3"): decode_string,
-    ord("4"): decode_string,
-    ord("5"): decode_string,
-    ord("6"): decode_string,
-    ord("7"): decode_string,
-    ord("8"): decode_string,
-    ord("9"): decode_string
+    ord("0"): decode_bytes,
+    ord("1"): decode_bytes,
+    ord("2"): decode_bytes,
+    ord("3"): decode_bytes,
+    ord("4"): decode_bytes,
+    ord("5"): decode_bytes,
+    ord("6"): decode_bytes,
+    ord("7"): decode_bytes,
+    ord("8"): decode_bytes,
+    ord("9"): decode_bytes
 }
 
 
