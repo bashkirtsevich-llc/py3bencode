@@ -29,6 +29,12 @@ def decode_bytes(x, f):
     return (x[colon:colon + n], colon + n)
 
 
+def decode_string(x, f):
+    r, l = decode_bytes(x, f)
+
+    return str(r, "utf-8"), l
+
+
 def decode_list(x, f):
     r, f = [], f + 1
     while x[f] != ord("e"):
@@ -41,7 +47,7 @@ def decode_list(x, f):
 def decode_dict(x, f):
     r, f = {}, f + 1
     while x[f] != ord("e"):
-        k, f = decode_bytes(x, f)
+        k, f = decode_string(x, f)
         r[k], f = decode_func[x[f]](x, f)
 
     return (r, f + 1)
