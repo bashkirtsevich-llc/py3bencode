@@ -9,5 +9,5 @@ deploy:
   password: $USERPASSWORD
   on:
     tags: true
-    distributions: sdist
+    distributions: "sdist bdist_wheel"
     repo: bashkirtsevich/py3bencode
