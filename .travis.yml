@@ -3,6 +3,8 @@ python:
   - "3.6.3"
 install:
   - echo "install nothing!"
+script:
+  - ls -alR
 deploy:
   provider: pypi
   user: $USERNAME
