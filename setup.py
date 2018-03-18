@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='py3-bencode',
-    version='0.0.1',
+    version='0.0.2',
     description="Python 3 bencoding implementation",
     long_description=open('README.md', 'r').read().strip(),
     classifiers=["Programming Language :: Python"],
