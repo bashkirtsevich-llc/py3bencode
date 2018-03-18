@@ -7,7 +7,3 @@ deploy:
   provider: pypi
   user: $USERNAME
   password: $USERPASSWORD
-  on:
-    tags: true
-    distributions: "sdist bdist_wheel"
-    repo: bashkirtsevich/py3bencode
