@@ -10,4 +10,4 @@ deploy:
   on:
     tags: true
     distributions: sdist
-    repo: bashkirtsevich/py3-bencode
+    repo: bashkirtsevich/py3bencode
