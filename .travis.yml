@@ -4,7 +4,7 @@ python:
 install:
   - echo "install nothing!"
 script:
-  - ls -alR
+  - echo "no script"
 deploy:
   provider: pypi
   user: $USERNAME
