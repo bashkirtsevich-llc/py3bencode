@@ -7,7 +7,7 @@ deploy:
   provider: pypi
   user: $USERNAME
   password: $USERPASSWORD
-  distributions: sdist bdist_wheel
+  distributions: sdist
   on:
     all_branches: true
   skip_cleanup: true
