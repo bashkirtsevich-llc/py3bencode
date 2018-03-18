@@ -1,11 +1,13 @@
 language: python
 python:
-  - "3.6.3"
-install:
-  - echo "install nothing!"
+  - 3.6
 script:
-  - echo "no script"
+  - python setup.py build
 deploy:
   provider: pypi
   user: $USERNAME
   password: $USERPASSWORD
+  on:
+    tags: true
+    distributions: sdist
+    repo: bashkirtsevich/py3-bencode
