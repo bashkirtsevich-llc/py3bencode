@@ -57,16 +57,10 @@ decode_func = {
     ord("l"): decode_list,
     ord("d"): decode_dict,
     ord("i"): decode_int,
-    ord("0"): decode_bytes,
-    ord("1"): decode_bytes,
-    ord("2"): decode_bytes,
-    ord("3"): decode_bytes,
-    ord("4"): decode_bytes,
-    ord("5"): decode_bytes,
-    ord("6"): decode_bytes,
-    ord("7"): decode_bytes,
-    ord("8"): decode_bytes,
-    ord("9"): decode_bytes
+    **{
+        ord(c): decode_bytes
+        for c in "0123456789"
+    }
 }
 
 
