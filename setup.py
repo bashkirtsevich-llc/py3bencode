@@ -9,11 +9,7 @@ setup(
     description="Python 3 bencoding implementation",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    classifiers=[
-        "Programming Language :: Python",
-        "License :: GPL3 License",
-        "Operating System :: OS Independent",
-    ],
+    classifiers=["Programming Language :: Python"],
     keywords="bencode rawbytes torrent bittorrent",
     author="D.Bashkirtsevich",
     author_email="bashkirtsevich@gmail.com",
