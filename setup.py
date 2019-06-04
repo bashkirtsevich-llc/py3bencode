@@ -10,7 +10,7 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     classifiers=[
-        "Programming Language :: Python :: 3.6+",
+        "Programming Language :: Python",
         "License :: GPL3 License",
         "Operating System :: OS Independent",
     ],
@@ -19,7 +19,6 @@ setup(
     author_email="bashkirtsevich@gmail.com",
     url="https://github.com/bashkirtsevich-llc/py3bencode",
     license="GPL3 License",
-    py_modules=["bencode"],
     include_package_data=True,
     zip_safe=True,
     packages=find_packages("src"),
