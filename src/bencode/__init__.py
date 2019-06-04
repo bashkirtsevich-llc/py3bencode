@@ -26,13 +26,7 @@ def decode_bytes(x, f):
 
     colon += 1
 
-    return (x[colon:colon + n], colon + n)
-
-
-def decode_string(x, f):
-    r, l = decode_bytes(x, f)
-
-    return str(r, "utf-8"), l
+    return (bytes(x[colon:colon + n]), colon + n)
 
 
 def decode_list(x, f):
@@ -47,7 +41,7 @@ def decode_list(x, f):
 def decode_dict(x, f):
     r, f = {}, f + 1
     while x[f] != ord("e"):
-        k, f = decode_string(x, f)
+        k, f = decode_bytes(x, f)
         r[k], f = decode_func[x[f]](x, f)
 
     return (r, f + 1)
@@ -64,7 +58,24 @@ decode_func = {
 }
 
 
-def bdecode(x):
+def bytes_decode_recursive(x, decoder):
+    if isinstance(x, dict):
+        return {
+            decoder("key", key): bytes_decode_recursive(value, decoder)
+            for key, value in x.items()
+        }
+    elif isinstance(x, list):
+        return [
+            bytes_decode_recursive(item, decoder)
+            for item in x
+        ]
+    elif isinstance(x, bytes):
+        return decoder("value", x)
+    else:
+        return x
+
+
+def bdecode(x, decoder=None):
     try:
         r, l = decode_func[x[0]](x, 0)
     except (IndexError, KeyError, ValueError):
@@ -73,7 +84,7 @@ def bdecode(x):
     if l != len(x):
         raise BTFailure("invalid bencoded value (data after valid prefix)")
 
-    return r
+    return bytes_decode_recursive(r, decoder) if decoder else r
 
 
 def encode_int(x):
@@ -146,4 +157,4 @@ encode_func = {
 
 
 def bencode(x):
-    return encode_func[type(x)](x)
+    return bytes(encode_func[type(x)](x))
