@@ -1,5 +1,5 @@
 # Python 3 bencoding library
-[![Build Status](https://travis-ci.org/bashkirtsevich/py3bencode.svg?branch=master)](https://travis-ci.org/bashkirtsevich/py3bencode)
+[![Build Status](https://travis-ci.org/bashkirtsevich-llc/py3bencode.svg?branch=master)](https://travis-ci.org/bashkirtsevich-llc/py3bencode)
 
 Python 3 bytearray bencoding library.
 
