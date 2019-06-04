@@ -1,21 +1,28 @@
-# /usr/bin/env python
-
 from setuptools import setup, find_packages
 
+with open("README.md") as f:
+    long_description = f.read()
+
 setup(
-    name='py3-bencode',
-    version='0.0.2',
+    name="py3-bencode",
+    version="0.0.3",
     description="Python 3 bencoding implementation",
-    long_description=open('README.md', 'r').read().strip(),
-    classifiers=["Programming Language :: Python"],
-    keywords='',
-    author='D.Bashkirtsevich',
-    author_email='bashkirtsevich@gmail.com',
-    url='https://github.com/bashkirtsevich/py3bencode',
-    license='GPL3 License',
-    py_modules=['bencode'],
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    classifiers=[
+        "Programming Language :: Python :: 3.6+",
+        "License :: GPL3 License",
+        "Operating System :: OS Independent",
+    ],
+    keywords="bencode rawbytes torrent bittorrent",
+    author="D.Bashkirtsevich",
+    author_email="bashkirtsevich@gmail.com",
+    url="https://github.com/bashkirtsevich-llc/py3bencode",
+    license="GPL3 License",
+    py_modules=["bencode"],
     include_package_data=True,
     zip_safe=True,
-    packages=find_packages('src'),
-    package_dir={'': 'src'},
+    packages=find_packages("src"),
+    package_dir={"": "src"},
+    python_requires=">=3.6.*"
 )
